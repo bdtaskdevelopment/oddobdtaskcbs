@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the Product Service model -->
+    <record id="auditor_tree_view" model="ir.ui.view">
+        <field name="name">product.service.tree</field>
+        <field name="model">product.service</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="id"/>
+                <field name="name"/>
+                <field name="product_type_id"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the Product Service model -->
+    <record id="product_service_form_view" model="ir.ui.view">
+        <field name="name">product.service.form</field>
+        <field name="model">product.service</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group col="2">
+                        <group>
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="id"/>
+                            <field name="link_account_id"/>
+                            <field name="product_type_id"/>
+                        </group>
+                        <group>
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="name"/>
+                            <field name="code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the Product Service model -->
+    <record id="product_service_action" model="ir.actions.act_window">
+        <field name="name">Product Service</field>
+        <field name="res_model">product.service</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

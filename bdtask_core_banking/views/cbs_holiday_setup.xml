@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the CBS Holiday Setup model -->
+    <record id="cbs_holiday_setup_tree_view" model="ir.ui.view">
+        <field name="name">cbs.holiday.setup.tree</field>
+        <field name="model">cbs.holiday.setup</field>
+        <field name="arch" type="xml">
+            <tree>
+            
+                <!-- Fields to be displayed in the tree view -->
+                <field name="company_id"/>
+                <field name="branch_id"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <field name="holiday"/>
+                <field name="holiday_reason"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the CBS Holiday Setup model -->
+    <record id="cbs_holiday_setup_form_view" model="ir.ui.view">
+        <field name="name">cbs.holiday.setup.form</field>
+        <field name="model">cbs.holiday.setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="custom_create" string="Create Holiday" type="object" class="oe_highlight" attrs="{'invisible': [('is_visible', '=', True)]}"/>
+                    <button name="custom_apply" string="Apply Holiday" type="object" class="oe_highlight"/>
+                    <!-- <button name="custom_apply" string="Apply" type="object" class="oe_highlight" attrs="{'invisible': ['|',('is_visible', '=', False),('is_holiday', '=', True)]}"/> -->
+                </header>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="company_id"/>
+                            <field name="from_date"/>
+                            <field name="holiday"/>
+                            <field name="is_visible" invisible="1"/>
+                            <field name="is_holiday" invisible="1"/>
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="branch_id"/>
+                            <field name="to_date"/>
+                            <field name="holiday_reason"/>
+                        </group>
+                    </group>
+                    <!-- Notebook section for Holiday Setup Line -->
+                    <notebook>
+                        <page string = "Holiday Setup Line">
+                            <field name = "holiday_id">
+                                <tree string = "Holiday Setup Line" editable="bottom">
+                                    <!-- Fields to be displayed in the tree view of Holiday Setup Line -->
+                                    <field name="name"/>
+                                    <field name="date"/>
+                                    <field name="is_holiday"/>
+                                    <field name="holiday_line_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Holiday Setup model -->
+    <record id="cbs_holiday_setup_action" model="ir.actions.act_window">
+        <field name="name">CBS Holiday Setup</field>
+        <field name="res_model">cbs.holiday.setup</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+  
+     
+</odoo>
+
+ 

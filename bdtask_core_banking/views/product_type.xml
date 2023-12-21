@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the Product Type model -->
+    <record id="product_type_tree_view" model="ir.ui.view">
+        <field name="name">product.type.tree</field>
+        <field name="model">product.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="name"/>
+                <field name="product_code"/>
+                <field name="is_bank_account_genarate"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the Product Type model -->
+    <record id="product_type_form_view" model="ir.ui.view">
+        <field name="name">product.type.form</field>
+        <field name="model">product.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="name"/>
+                            <field name="is_bank_account_genarate"/>
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="product_code"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action defining for the Product Type model -->
+    <record id="product_type_action" model="ir.actions.act_window">
+        <field name="name">Product Type</field>
+        <field name="res_model">product.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     
+</odoo>

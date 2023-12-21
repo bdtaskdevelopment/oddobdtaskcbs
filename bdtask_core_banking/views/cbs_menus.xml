@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Menu structure for the BDtask Core Banking module -->
+    <menuitem id="cbs_menu_root"
+              name="BDtask Core Banking"
+              web_icon="bdtask_core_banking,static/description/icon.png"
+              sequence="1">
+
+        <!-- Menu item for Customer (res.partner) -->
+        <menuitem id="res_partner_menu"
+                  name="Customer"
+                  action="res_partner_action_inherit"
+                  sequence="10">
+        </menuitem>
+
+        <!-- Menu item for Link Account -->
+        <menuitem id="link_account_menu"
+                  name="Link Account"
+                  action="link_account_action"
+                  sequence="20">
+        </menuitem>
+
+        <!-- Menu item for Product Service -->
+        <menuitem id="product_service_menu"
+                  name="Product Service"
+                  action="product_service_action"
+                  sequence="30">
+        </menuitem>
+
+        <!-- Menu item for CBS Bank Account -->
+        <menuitem id="cbs_bank_account_menu"
+                  name="CBS Bank Account"
+                  action="cbs_bank_account_action"
+                  sequence="40">
+        </menuitem>
+
+        <!-- Menu item for CBS Transaction -->
+        <menuitem id="cbs_transaction_menu"
+                  name="CBS Transaction"
+                  action="cbs_transaction_action"
+                  sequence="50">
+        </menuitem>
+
+        <!-- Menu item for CBS Transaction Line -->
+        <menuitem id="cbs_transaction_line_menu"
+                  name="CBS Transaction Line"
+                  action="cbs_transaction_line_action"
+                  sequence="60">
+        </menuitem>
+
+        <!-- Configuration submenu -->
+        <menuitem id="menu_cbs_config"
+                  name="Configuration"
+                  sequence="70">
+
+            <!-- Menu item for Product Type -->
+            <menuitem id="product_type_menu"
+                      name="Product Type"
+                      action="product_type_action"
+                      sequence="10"/>
+            
+            <!-- Menu item for Teller Account -->
+            <menuitem id="teller_account_menu"
+                      name="Teller Account"
+                      action="teller_account_action"
+                      sequence="20"/>
+                
+            <!-- Menu item for Calender Setup -->
+            <menuitem id="calendar_setup_menu"
+                      name="Calender Setup"
+                      action="cbs_calendar_setup_action"
+                      sequence="30"/>
+            
+            <!-- Menu item for Weekend Setup -->
+            <menuitem id="weekend_setup_menu"
+                      name="Weekend Setup"
+                      action="cbs_weekend_setup_action"
+                      sequence="40"/>
+            
+            <!-- Menu item for Holiday Setup -->
+            <menuitem id="holiday_setup_menu"
+                      name="Holiday Setup"
+                      action="cbs_holiday_setup_action"
+                      sequence="50"/> 
+            <!-- Menu item for day open close  -->
+            <menuitem id="day_open_close_menu"
+                      name="Day Open Close"
+                      action="day_open_close_action"
+                      sequence="60"/>      
+        </menuitem>
+        
+    </menuitem>
+    
+</odoo>

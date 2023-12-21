@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of CBS Branch model -->
+    <record id="cbs_branch_tree_view" model="ir.ui.view">
+        <field name="name">cbs.branch.tree</field>
+        <field name="model">cbs.branch</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of CBS Branch model -->
+    <record id="cbs_branch_form_view" model="ir.ui.view">
+        <field name="name">cbs.branch.form</field>
+        <field name="model">cbs.branch</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="company_id"/>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="date"/>
+                        </group>
+                        <group col="2">
+                             <!-- Fields to be displayed in the right column of the form -->
+                            <field name="office_type"/>
+                            <field name="b_short_name"/>
+                            <field name="is_active"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Branch model -->
+    <record id="cbs_branch_action" model="ir.actions.act_window">
+        <field name="name">Branch</field>
+        <field name="res_model">cbs.branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu creation for the CBS Branch model -->
+    <menuitem id="cbs_branch_menu"
+                  name="Branches"
+                  parent="base.menu_users"
+                  action="cbs_branch_action"/>
+
+</odoo>

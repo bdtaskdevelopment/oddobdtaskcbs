@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the CBS Transaction model -->
+    <record id="cbs_transaction_tree_view" model="ir.ui.view">
+        <field name="name">cbs.transaction.tree</field>
+        <field name="model">cbs.transaction</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="name"/>
+                <field name="transaction_status"/>
+                <field name="transaction_date"/>
+                <field name="cbs_bank_account_id"/>
+                <field name="partner_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the CBS Transaction model -->
+    <record id="cbs_transaction_form_view" model="ir.ui.view">
+        <field name="name">cbs.transaction.form</field>
+        <field name="model">cbs.transaction</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Create Journal" class="oe_highlight" type="object" name="create_journal_entries" attrs="{'invisible': [('is_visible', '=', True)]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <!-- Fields displayed in the left column of the form -->
+                        <group col="2">
+                            <field name="name" invisible="1"/>
+                            <!-- <field name="journal_id"/> -->
+                            <field name="cbs_bank_account_id"/>
+                            <field name="partner_id"/>
+                            <field name="email"/>
+                            <field name="phone"/>
+                            <field name="remarks"/>
+                            <field name="is_visible" invisible="1"/>
+                        </group>
+                        <!-- Fields displayed in the right column of the form -->
+                        <group col="2">
+                            <field name="product_type_id" domain="[('is_bank_account_genarate', '=', True)]" attrs="{'required': [('product_type_id','=', False)]}" />
+                            <field name="product_id" attrs="{'invisible': [('product_type_id', '=', False)], 'required': [('product_id','=', False)]}" domain="[('product_type_id', '=', product_type_id)]"/>
+                            <field name="transaction_status"/>
+                            <field name="calendar_setup_line_id"  invisible="1"/> 
+                            <field name="transaction_date"/>
+                        </group>
+                    </group>
+                    <!-- Notebook section for CBS Transaction Line -->
+                    <notebook>
+                        <page string="CBS Transaction Line">
+                            <field name="cbs_transaction_line_id" context="{'default_transaction_date': transaction_date}">
+                                <tree string="CBS Transaction Line" editable="bottom">
+                                    <!-- Fields to be displayed in the tree view of CBS Transaction Line -->
+                                    <field name="transaction_id"/>
+                                    <field name="cbs_bank_account_id"/>
+                                    <field name="transaction_status" invisible="1"/>
+                                    <field name="transaction_date" invisible="1"/>
+                                    <field name="product_id"/>
+                                    <field name="link_account_id"/>
+                                    <field name="account_id"/>
+                                    <field name="debit_amount" sum="Total Debit"/>
+                                    <field name="credit_amount" sum="Total Credit"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Transaction model -->
+    <record id="cbs_transaction_action" model="ir.actions.act_window">
+        <field name="name">CBS Transaction</field>
+        <field name="res_model">cbs.transaction</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

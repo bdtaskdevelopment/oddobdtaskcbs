@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the CBS Weekend Setup model -->
+    <record id="cbs_weekend_setup_tree_view" model="ir.ui.view">
+        <field name="name">cbs.weekend.setup.tree</field>
+        <field name="model">cbs.weekend.setup</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="company_id"/>
+                <field name="branch_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the CBS Weekend Setup model -->
+    <record id="cbs_weekend_setup_form_view" model="ir.ui.view">
+        <field name="name">cbs.weekend.setup.form</field>
+        <field name="model">cbs.weekend.setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Create Days" class="oe_highlight" type="object" name="custom_create_day" attrs="{'invisible': [('is_visible', '=', True)]}"/>
+                    <button string="Apply Weekends" class="oe_highlight" type="object" name="custom_apply" attrs="{'invisible': [('is_visible', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="company_id"/>
+                            <field name="is_visible" invisible="1"/>
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="branch_id"/>
+                        </group>
+                    </group>
+                    <!-- Notebook section for CBS Transaction Line -->
+                    <notebook>
+                        <page string="Days">
+                            <field name="cbs_week_id" string="Days">
+                                <tree string="Days" editable="bottom">
+                                    <!-- Fields to be displayed in the tree view of CBS Transaction Line -->
+                                    <field name="name"/>
+                                    <field name="is_weekend"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Weekend Setup model -->
+    <record id="cbs_weekend_setup_action" model="ir.actions.act_window">
+        <field name="name">CBS Weekend Setup</field>
+        <field name="res_model">cbs.weekend.setup</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     
+</odoo>
+
+ 

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_users_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.users.form.view.inherit</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref= "base.view_users_form"/>
+        <field name="arch" type="xml">
+            <!-- Inherit a Group in Notebook -->
+            <xpath expr="//notebook/page[@name='access_rights']/group" position="after">
+                <group string="Multi Branches">
+                    <!-- Declare Field -->
+                    <field name="branch_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                    <field name="branch_id" options="{'no_create': True}"/>
+                </group>
+            </xpath>
+        </field>      
+    </record>
+</odoo>

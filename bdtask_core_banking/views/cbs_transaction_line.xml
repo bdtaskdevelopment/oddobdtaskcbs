@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the CBS Transaction Line model -->
+    <record id="cbs_transaction_line_tree_view" model="ir.ui.view">
+        <field name="name">cbs.transaction.line.tree</field>
+        <field name="model">cbs.transaction.line</field>
+        <field name="arch" type="xml">
+            <tree create="false">
+                <!-- Fields to be displayed in the tree view -->
+                <field name="transaction_id"/>
+                <field name="transaction_status"/>
+                <field name="transaction_date"/>
+                <field name="cbs_bank_account_id"/>
+                <field name="product_id"/>
+                <field name="link_account_id"/>
+                <field name="account_id"/>
+                <field name="debit_amount"/>
+                <field name="credit_amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the CBS Transaction Line model -->
+    <record id="cbs_transaction_line_form_view" model="ir.ui.view">
+        <field name="name">cbs.transaction.line.form</field>
+        <field name="model">cbs.transaction.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- Fields displayed in the left column of the form -->
+                        <group col="2">
+                            <field name="transaction_id"/>
+                            <field name="cbs_bank_account_id"/>
+                            <field name="product_id"/>
+                            <field name="link_account_id"/>
+                            <field name="account_id"/>
+                        </group>
+                        <!-- Fields displayed in the right column of the form -->
+                        <group col="2">
+                            <field name="debit_amount"/>
+                            <field name="credit_amount"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View definition for the search view of the CBS Transaction Line model -->
+    <record id="cbs_transaction_line_search_view" model="ir.ui.view">
+        <field name="name">cbs.transaction.line.search</field>
+        <field name="model">cbs.transaction.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- Fields available in the search view -->
+                <field name="cbs_bank_account_id"/>
+                <!-- Filter for transaction date -->
+                <filter name="filter_transaction_date" string="Transaction Date" domain="[('transaction_date','>=', context_today().strftime('%Y-%m-%d'))]"/>
+                <!-- Grouping options -->
+                <group expand="0" string="Group By">
+                    <filter string="Account Number" name="cbs_bank_account_id" context="{'group_by': 'cbs_bank_account_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Transaction Line model -->
+    <record id="cbs_transaction_line_action" model="ir.actions.act_window">
+        <field name="name">CBS Transaction Line</field>
+        <field name="res_model">cbs.transaction.line</field>
+        <field name="view_mode">tree</field>
+    </record>
+</odoo>

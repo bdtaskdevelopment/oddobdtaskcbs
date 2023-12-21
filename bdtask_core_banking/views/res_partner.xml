@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_form_view_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form.view.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref= "base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Mandatory field for phone -->
+            <field name="phone" widget="phone"  position= "attributes"> 
+                <attribute name="required">True</attribute>
+            </field>
+            <!-- Mandatory field for email -->
+            <field name="email" widget="email" position= "attributes"> 
+                <attribute name="required">True</attribute>
+            </field>        
+        </field>      
+    </record>
+
+    <!-- Action definition for the res.partner model, inheriting the existing action -->
+    <record id="res_partner_action_inherit" model="ir.actions.act_window">
+        <field name="name">Customer</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    
+</odoo>

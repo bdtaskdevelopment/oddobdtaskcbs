@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the day open close model -->
+    <record id="day_open_close_tree_view" model="ir.ui.view">
+        <field name="name">day.open.close.tree</field>
+        <field name="model">day.open.close</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="company_id"/>
+                <field name="branch_id"/>
+                <field name="date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the day open close model -->
+    <record id="day_open_close_form_view" model="ir.ui.view">
+        <field name="name">day.open.close.form</field>
+        <field name="model">day.open.close</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Open" class="oe_highlight" type="object" name="custom_create_date" attrs="{'invisible': [('is_visible', '=', True)]}"/>
+                    <button string="Close" class="oe_highlight" type="object" name="custom_close_date" attrs="{'invisible': [('is_visible', '=', False)]}"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="is_visible" invisible="1"/>
+                            <field name="company_id"/>
+                            <field name="date" readonly="1"/>
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="branch_id"/>
+                        </group>
+                    </group>
+                   
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the day open close model -->
+    <record id="day_open_close_action" model="ir.actions.act_window">
+        <field name="name">Day Open Close</field>
+        <field name="res_model">day.open.close</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     
+</odoo>

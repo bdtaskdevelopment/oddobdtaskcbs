@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the CBS Calendar Setup model -->
+    <record id="cbs_calendar_setup_tree_view" model="ir.ui.view">
+        <field name="name">cbs.calendar.setup.tree</field>
+        <field name="model">cbs.calendar.setup</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="company_id"/>
+                <field name="branch_id"/>
+                <field name="from_date"/>
+                <field name="to_date"/>
+                <!-- <field name="add_more_date"/> -->
+            </tree>
+        </field>
+    </record>
+    <record id="calendar_setup_line_tree_view" model="ir.ui.view">
+        <field name="name">calendar.setup.line.tree</field>
+        <field name="model">calendar.setup.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                   <field name="date"/>
+                    <field name="day_name" />
+                    <field name="is_weekend"/>
+                    <field name="is_holiday"/>
+                    <field name="day_status"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the CBS Calendar Setup model -->
+    <record id="cbs_calendar_setup_form_view" model="ir.ui.view">
+        <field name="name">cbs.calendar.setup.form</field>
+        <field name="model">cbs.calendar.setup</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button string="Create Date" class="oe_highlight" type="object" name="custom_create_date"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="company_id"/>
+                            <field name="from_date"/>
+                            <!-- <field name="add_more_date"/> -->
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="branch_id"/>
+                            <field name="to_date"/>
+                        </group>
+                    </group>
+                    <notebook>
+                         <page string="Calendar Setup Line">
+                            <field name="calendar_setup_id" readonly="1">
+                                <tree string="Calendar Setup Line" editable="bottom">
+                                    <field name="date"/>
+                                    <field name="day_name" />
+                                    <field name="is_weekend"/>
+                                    <field name="is_holiday"/>
+                                    <field name="day_status"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="branch_id" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the CBS Calendar Setup model -->
+    <record id="cbs_calendar_setup_action" model="ir.actions.act_window">
+        <field name="name">CBS Calendar Setup</field>
+        <field name="res_model">cbs.calendar.setup</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+     
+</odoo>
+
+ 

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- View definition for the tree view of the Link Account model -->
+    <record id="link_account_tree_view" model="ir.ui.view">
+        <field name="name">link.account.tree</field>
+        <field name="model">link.account</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- Fields to be displayed in the tree view -->
+                <field name="name"/>
+                <field name="code"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View definition for the form view of the Link Account model -->
+    <record id="link_account_form_view" model="ir.ui.view">
+        <field name="name">link.account.form</field>
+        <field name="model">link.account</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the left column of the form -->
+                            <field name="name"/>
+                            <field name="id"/>
+                        </group>
+                        <group col="2">
+                            <!-- Fields to be displayed in the right column of the form -->
+                            <field name="code"/>
+                            <field name="chart_of_accounts_id"/>
+                        </group>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action definition for the Link Account model -->
+    <record id="link_account_action" model="ir.actions.act_window">
+        <field name="name">Link Account</field>
+        <field name="res_model">link.account</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+     
+</odoo>
+
+ 

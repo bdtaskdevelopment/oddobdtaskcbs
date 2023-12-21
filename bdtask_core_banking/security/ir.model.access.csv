@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_link_account,access_link_account,model_link_account,,1,1,1,1
+access_product_service,access_product_service,model_product_service,,1,1,1,1
+access_cbs_bank_account,access_cbs_bank_account,model_cbs_bank_account,,1,1,1,1
+access_product_type,access_product_type,model_product_type,,1,1,1,1
+access_cbs_branch,access_cbs_branch,model_cbs_branch,,1,1,1,1
+access_cbs_transaction,access_cbs_transaction,model_cbs_transaction,,1,1,1,1
+access_cbs_transaction_line,access_cbs_transaction_line,model_cbs_transaction_line,,1,1,1,1
+access_teller_account,access_teller_account,model_teller_account,,1,1,1,1
+access_cbs_calendar_setup,access_cbs_calendar_setup,model_cbs_calendar_setup,,1,1,1,1
+access_cbs_weekend_setup,access_cbs_weekend_setup,model_cbs_weekend_setup,,1,1,1,1
+access_cbs_week,access_cbs_week,model_cbs_week,,1,1,1,1
+access_cbs_holiday_setup,access_cbs_holiday_setup,model_cbs_holiday_setup,,1,1,1,1
+access_holiday_setup_line,access_holiday_setup_line,model_holiday_setup_line,,1,1,1,1
+access_calendar_setup_line,access_calendar_setup_line,model_calendar_setup_line,,1,1,1,1
+access_day_open_close,access_day_open_close,model_day_open_close,,1,1,1,1
